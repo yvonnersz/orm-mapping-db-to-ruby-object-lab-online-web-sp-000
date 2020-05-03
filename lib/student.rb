@@ -69,7 +69,6 @@ def self.all_students_in_grade_9
     SELECT *
     FROM students
     WHERE grade = 9
-    LIMIT 1
   SQL
 
   DB[:conn].execute(sql).collect do |row|
