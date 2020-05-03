@@ -88,14 +88,15 @@ def self.students_below_12th_grade
   end
 end
 
-def self.students_below_12th_grade
+def self.first_X_students_in_grade_10(x)
   sql = <<-SQL
     SELECT *
     FROM students
-    WHERE grade < 12
+    WHERE grade = 10
+    LIMIT x
   SQL
 
-  DB[:conn].execute(sql).collect do |row|
+  DB[:conn].execute(sql, x).collect do |row|
     self.new_from_db(row)
   end
 end
